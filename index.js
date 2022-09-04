@@ -25,7 +25,15 @@ app.get('/api/hello', function (req, res) {
 
 app.get('/api/whoami',function (req,res){
   let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress
-  res.send(ip); 
+  let result = {
+    ipaddress : ip,
+    language : req.headers['accept-language'],
+    software : req.headers['user-agent']
+  }
+  // console.log('x-forwarded-for' in req.header);
+  // for (let i in req.headers)
+  //   console.log(i);
+  res.send(result); 
 })
 
 // listen for requests :)
