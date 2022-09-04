@@ -1,6 +1,5 @@
 // index.js
 // where your node app starts
-
 // init project
 require('dotenv').config();
 var express = require('express');
@@ -23,6 +22,11 @@ app.get('/', function (req, res) {
 app.get('/api/hello', function (req, res) {
   res.json({ greeting: 'hello API' });
 });
+
+app.get('/api/whoami',function (req,res){
+  let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress
+  res.send(ip); 
+})
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT || 3000, function () {
