@@ -30,9 +30,6 @@ app.get('/api/whoami',function (req,res){
     language : req.headers['accept-language'],
     software : req.headers['user-agent']
   }
-  // console.log('x-forwarded-for' in req.header);
-  // for (let i in req.headers)
-  //   console.log(i);
   res.send(result); 
 })
 
